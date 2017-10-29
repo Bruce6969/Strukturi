@@ -1,8 +1,15 @@
+import linkedlist.LinkedList;
+import linkedlist.Node;
 
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		LinkedList linkedList = new LinkedList();
+		for (int i = 0; i < 10; i++) {
+			Node node = new Node(i, "");
+			linkedList.addFirst(node);
+		}
+		linkedList.printAllElements();
 	}
 
 }
