@@ -4,10 +4,10 @@ public class LinkedList {
 
 	private Node first;
 
-	
 	public LinkedList() {
 		this.first = null;
 	}
+
 	/*
 	 * ########################################### ######## Getters/Setters
 	 * ################## ###########################################
@@ -28,12 +28,11 @@ public class LinkedList {
 		if (this.first == null) {
 			this.first = node;
 			this.first.setNext(null);
-		}
-		else {
+		} else {
 			node.setNext(first);
 			this.first = node;
 		}
-		
+
 	}
 
 	public void addSecond(Node firstNode, Node secondNode) {
@@ -43,13 +42,45 @@ public class LinkedList {
 	}
 
 	public void printAllElements() {
-		Node current = this.first;
+		Node current = first;
 		while (current.getNext() != null) {
 			System.out.print(current + "->");
 			current = current.getNext();
 		}
 		System.out.print(current + "->null");
 		System.out.println();
+	}
+
+	public void deleteFirstElement() {
+		first = first.getNext();
+	}
+
+	public int getNumberOfElementsInList() {
+		int numberOfElementsInList = 0;
+		Node current = first;
+		do {
+			numberOfElementsInList++;
+			if (current.getNext() != null) {
+				current = current.getNext();
+			}
+		} while (current.getNext() != null);
+		return numberOfElementsInList;
+	}
+
+	public int[] getElements() {
+		int numberOfElementsInList = getNumberOfElementsInList();
+		int[] elementsInList = new int[numberOfElementsInList];
+		int i = 0;
+		Node current = first;
+		do {
+			elementsInList[i] = current.getIntValue();
+			if (current.getNext() != null) {
+				i++;
+				current = current.getNext();
+			}
+		} while (current.getNext() != null);
+
+		return elementsInList;
 	}
 
 }
